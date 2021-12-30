@@ -12,7 +12,7 @@ const NavItem = ({ title, classes }) => {
   return <li className={`mx-4 cursor-pointer ${classes}`}>{title}</li>;
 };
 const Navbar = () => {
-  const [toggleMenuBar, setToggleMenuBar] = useState(true);
+  const [toggleMenuBar, setToggleMenuBar] = useState(false);
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
