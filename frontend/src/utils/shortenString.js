@@ -1,0 +1,1 @@
+export const shortenString = (string) => `${string.slice(0, 5)}...${string.slice(string.length-4)}`;

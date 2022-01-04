@@ -6,7 +6,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import { Loader } from "./index";
 import { TransactionContext } from "../context/TransactionContext";
 
-
+import {shortenString} from "../utils/shortenString"
 const handleSubmit = () => {
   alert("hey yo!");
 };
@@ -26,7 +26,7 @@ const Input = ({ placeholder, type, name, handleChange, value }) => (
 );
 const Welcome = () => {
 
-  const {connectWallet, currentAccount, handleChange, formData,sendTransaction} = useContext(TransactionContext)
+  const {connectWallet, currentAccount, handleChange, formData,sendTransaction, isLoading} = useContext(TransactionContext)
 
 
 
@@ -86,7 +86,7 @@ const Welcome = () => {
               </div>
               <div>
                 <p className="text-white font-light text-sm">
-                  0xjshk...kjsdjkhsd
+                  {currentAccount ? shortenString(currentAccount) : "Address"}
                 </p>
                 <p className="text-white font-bold text-lg mt-1">Ethereum</p>
               </div>
@@ -119,7 +119,7 @@ const Welcome = () => {
               handleChange={handleChange}
             />
             <div className="h-[1px] w-full bg-gray-400 my-2" />
-            {false ? (
+            {isLoading ? (
               <Loader />
             ) : (
               <button
