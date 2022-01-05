@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { ethers, Signer } from "ethers";
 
 import { contractABI, contractAddress } from "../utils/constants";
@@ -40,7 +41,12 @@ export const TransactionProvider = ({ children }) => {
 
   const getAllTransactions = async()=>{
       try {
-        if (!ethereum) return alert("Please Install metamask");
+        if (!ethereum) return Swal.fire({
+          icon: "info",
+          title: "MetaMask Not Found.",
+          text: "Please Install Meta ask!",
+          footer: '<a href="">how to install metamask on chrom</a>',
+        });
               const transactionContract = getEthereumContract();
       const availableTransactions = await transactionContract.getAllTransactions()
       const structuredTransactions = availableTransactions.map((transaction)=>({
@@ -59,7 +65,13 @@ export const TransactionProvider = ({ children }) => {
   }
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!ethereum) return alert("Please Install metamask");
+      if (!ethereum) return Swal.fire({
+        icon: "info",
+        title: "MetaMask Not Found.",
+        text: "Please Install Meta ask!",
+        footer:
+          '<a href="https://www.geeksforgeeks.org/how-to-install-and-use-metamask-on-google-chrome/" target="_blank" >how to install metamask on chrome?</a>',
+      });;
 
       const accounts = await ethereum.request({
         method: "eth_accounts",
@@ -92,7 +104,14 @@ export const TransactionProvider = ({ children }) => {
 
   const connectWallet = async () => {
     try {
-      if (!ethereum) return alert("please install metamask");
+      if (!ethereum)
+        return Swal.fire({
+          icon: "info",
+          title: "MetaMask Not Found.",
+          text: "Please Install Meta ask!",
+          footer:
+            '<a href="https://www.geeksforgeeks.org/how-to-install-and-use-metamask-on-google-chrome/" target="_blank" >how to install metamask on chrome?</a>',
+        });
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -106,7 +125,14 @@ export const TransactionProvider = ({ children }) => {
 
   const sendTransaction = async () => {
     try {
-      if (!ethereum) return alert("please install metamask");
+      if (!ethereum)
+        return Swal.fire({
+          icon: "info",
+          title: "MetaMask Not Found.",
+          text: "Please Install Meta ask!",
+          footer:
+            '<a href="https://www.geeksforgeeks.org/how-to-install-and-use-metamask-on-google-chrome/" target="_blank" >how to install metamask on chrome?</a>',
+        });
       const { addressTo, amount, keyword, message } = formData;
       const transactionContract = getEthereumContract();
       const parsedAmount = ethers.utils.parseEther(amount);
